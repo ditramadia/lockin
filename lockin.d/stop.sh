@@ -21,7 +21,7 @@ filter="${1:-}"
 
 mapfile -t sessions < <(
     tmux ls -F '#{session_name}' 2>/dev/null |
-        awk -v p="$filter" -v prefixes="${PREFIXES[*]}"'
+        awk -v p="$filter" -v prefixes="${PREFIXES[*]}" '
         BEGIN { n = split(prefixes, pre, " ") }
         {
             name = $0
